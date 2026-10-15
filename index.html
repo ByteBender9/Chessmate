@@ -34,7 +34,14 @@
           <section class="panel mode-panel"><div class="panel-heading"><div><p class="eyebrow">GAME MODE</p><h2>Set up your match</h2></div><span class="heading-icon">⚙</span></div>
             <label class="field-label" for="game-mode">Play mode</label><select id="game-mode" class="select-control"><option value="ai">Play against AI</option><option value="local">Local 2-player</option></select>
             <div id="ai-settings"><label class="field-label" for="difficulty">AI difficulty</label><select id="difficulty" class="select-control"><option value="easy">Easy · Casual</option><option value="medium" selected>Medium · Strategic</option><option value="hard">Hard · Challenging</option></select><label class="field-label" for="player-color">Play as</label><select id="player-color" class="select-control"><option value="w" selected>White · Move first</option><option value="b">Black · Move second</option></select></div>
-            <label class="field-label" for="time-control">Time control</label><select id="time-control" class="select-control"><option value="0">No timer</option><option value="180">Blitz · 3 min</option><option value="300">Blitz · 5 min</option><option value="600" selected>Rapid · 10 min</option><option value="900">Rapid · 15 min</option></select>
+                        <label class="field-label" for="board-theme-picker">Board theme</label>
+            <div class="board-theme-picker" id="board-theme-picker" role="group" aria-label="Choose chessboard theme">
+              <button class="board-theme-option" type="button" data-board-theme="purple" aria-pressed="true"><span class="theme-swatch" style="--swatch-light:#e8e0f0;--swatch-dark:#665080" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Purple</button>
+              <button class="board-theme-option" type="button" data-board-theme="classic" aria-pressed="false"><span class="theme-swatch" style="--swatch-light:#eeeed2;--swatch-dark:#769656" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Classic</button>
+              <button class="board-theme-option" type="button" data-board-theme="blue" aria-pressed="false"><span class="theme-swatch" style="--swatch-light:#deeaf5;--swatch-dark:#5d83a6" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Blue</button>
+              <button class="board-theme-option" type="button" data-board-theme="wood" aria-pressed="false"><span class="theme-swatch" style="--swatch-light:#f0d9b5;--swatch-dark:#b58863" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Wood</button>
+            </div>
+<label class="field-label" for="time-control">Time control</label><select id="time-control" class="select-control"><option value="0">No timer</option><option value="180">Blitz · 3 min</option><option value="300">Blitz · 5 min</option><option value="600" selected>Rapid · 10 min</option><option value="900">Rapid · 15 min</option></select>
             <button id="start-game" class="primary-button">Start new game <span>→</span></button>
           </section>
 

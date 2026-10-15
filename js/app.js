@@ -286,3 +286,66 @@ window.addEventListener('beforeunload',stopTimer);
 $('ai-settings').hidden=false;
 // Render a ready-to-play board immediately; press Start new game to apply custom settings.
 renderBoard();
+
+// ==========================================
+// CHESSMATE — BOARD THEME CUSTOMIZATION
+// ==========================================
+
+const BOARD_THEMES = ["purple", "classic", "blue", "wood"];
+
+function applyBoardTheme(theme) {
+  const selectedTheme = BOARD_THEMES.includes(theme)
+    ? theme
+    : "purple";
+
+  // Apply the selected board theme
+  document.body.dataset.boardTheme = selectedTheme;
+
+  // Update the active theme button
+  document
+    .querySelectorAll("#board-theme-picker [data-board-theme]")
+    .forEach((button) => {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.boardTheme === selectedTheme)
+      );
+    });
+
+  // Save the selected theme in the browser
+  try {
+    localStorage.setItem("chessmate-board-theme", selectedTheme);
+  } catch (error) {
+    console.warn("Could not save the board theme.", error);
+  }
+}
+
+function initBoardThemes() {
+  const picker = document.getElementById("board-theme-picker");
+
+  // Do nothing if the theme selector isn't in the HTML
+  if (!picker) return;
+
+  // Handle theme selection
+  picker.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-board-theme]");
+
+    if (!button) return;
+
+    applyBoardTheme(button.dataset.boardTheme);
+  });
+
+  // Restore the previously selected theme
+  let savedTheme = "purple";
+
+  try {
+    savedTheme =
+      localStorage.getItem("chessmate-board-theme") || "purple";
+  } catch (error) {
+    console.warn("Could not restore the board theme.", error);
+  }
+
+  applyBoardTheme(savedTheme);
+}
+
+// Initialize board customization
+initBoardThemes();
